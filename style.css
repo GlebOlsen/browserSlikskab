@@ -6,3 +6,20 @@ h1 {
 body {
     background-color: violet;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+  }
+
+  li {
+    display: inline;
+
+  }
+
+  .jumbotron {
+      background-color: violet;
+  }
