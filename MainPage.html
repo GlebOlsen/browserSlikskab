@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <title>Document</title>
 </head>
+
 <body>
     <div id="app">
-        <div class="jumbotron text-center">
-          <h1>Slikskab</h1>
-          <p style="color: white;">Hold styr på dit slik mens du ikke er hjemme</p>
-          <ul>
-            <li><a href="#forside">Forside</a></li>
-            <li><a href="#mållinger">Målinger</a></li>
-          </ul>
+        <div class="container-fluid" style="border: dotted;">
+            <div class="row">
+                <div class="col-sm-9">
+                    <input v-model="seachText" placeholder="søg her">
+                    <table style="width:100%; border: solid;">
+                        <tr>
+                            <th>Sensor</th>
+                            <th>Tid</th>
+                            <th>Er den åben?</th>
+                            <th>Billede</th>
+                        </tr>
+                        <tr v-for="r of readings" v-if="readings.length > 0">
+                            <td>{{r.sensorId}}</td>
+                            <td>{{new Date(r.time * 1000)}}</td>
+                            <td>{{r.isOpen}}</td>
+                            <td><img :src="'data:image/jpeg;base64,'+r.image"/></td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="col-sm-3">
+                    sdsdsd
+                </div>
+            </div>
         </div>
-      </div>
-    
-<script src="index.js"></script>  
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="MainPage.js"></script>
 </body>
+
 </html>
