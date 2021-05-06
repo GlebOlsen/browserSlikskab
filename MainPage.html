@@ -8,21 +8,20 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
-    <title>Slikskabsovervågning</title>
+    <title>Document</title>
 </head>
 <body>
-  <div class="jumbotron">
-    <h1>Slikskabsovervågning</h1>
+    <div id="app">
+        <div class="jumbotron text-center">
+          <h1>Slikskab</h1>
+          <p style="color: white;">Hold styr på dit slik mens du ikke er hjemme</p>
+          <ul>
+            <li><a href="#forside">Forside</a></li>
+            <li><a href="#mållinger">Målinger</a></li>
+          </ul>
+        </div>
+      </div>
     
-  </div>
-  <div class="center">
-    <img src="Images/logo.png" alt="logo" style="align-content: center;">
-    <br>
-    <input v-model="UserName" type="text" placeholder="brugernavn"> <br><br>
-    <input v-model="Password" type="password" placeholder="password"> <br><br>
-    <button v-on:click="LogIn()" class="btn btn-primary">Log ind</button>
-
-  </div>
 <script src="index.js"></script>  
 </body>
 </html>
