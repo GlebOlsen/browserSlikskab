@@ -16,7 +16,10 @@
         <div class="container-fluid" style="border: dotted;">
             <div class="row">
                 <div class="col-sm-9">
-                    <input v-model="seachText" placeholder="søg her">
+                    <input v-model.number="searchDay" >
+                    <input v-model.number="searchMonth" >
+                    <input v-model.number="searchYear" >
+                    <button v-on:click="filter()" class="btn btn-primary">Filter</button>
                     <table style="width:100%; border: solid;">
                         <tr>
                             <th>Sensor</th>
@@ -24,7 +27,7 @@
                             <th>Er den åben?</th>
                             <th>Billede</th>
                         </tr>
-                        <tr v-for="r of readings" v-if="readings.length > 0">
+                        <tr v-for="r of filtered " v-if="readings.length > 0">
                             <td>{{r.sensorId}}</td>
                             <td>{{new Date(r.time * 1000)}}</td>
                             <td>{{r.isOpen}}</td>
