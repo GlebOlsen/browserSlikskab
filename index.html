@@ -21,13 +21,14 @@
     <div class="center">
       <img src="Images/logo.png" alt="logo" style="align-content: center;">
       <br>
-      <input v-model="UserName" type="text" placeholder="brugernavn"> <br><br>
-      <input v-model="Password" type="password" placeholder="password"> <br><br>
-      <button v-on:click="GoToMainPage()" class="btn btn-primary">Log ind</button>
+      <input id="name" v-model="UserName" type="text" placeholder="brugernavn"> <br><br>
+      <input id="pass" v-model="Password" type="password" placeholder="password"> <br><br>
+      <button id="click" v-on:click="Validate()" class="btn btn-primary">Log ind</button>
 
     </div>
   </div>
   <script src="index.js"></script>
+  <script src="login.js"></script>
 </body>
 
 </html>
