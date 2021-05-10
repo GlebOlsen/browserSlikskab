@@ -48,14 +48,12 @@ Vue.createApp({
             // Let's check if the browser supports notifications
             if (!("Notification" in window)) {
                 alert("This browser does not support desktop notification");
-            alert(Notification.permission)
             }
 
             // Let's check whether notification permissions have already been granted
             else if (Notification.permission === "granted") {
                 // If it's okay let's create a notification
                 var notification = new Notification("Hi there!");
-            alert(Notification.permission)
             }
 
             // Otherwise, we need to ask the user for permission
@@ -63,19 +61,16 @@ Vue.createApp({
                 Notification.requestPermission().then(function (permission) {
                     // If the user accepts, let's create a notification
                     if (permission === "granted") {
-                        setInterval(() => new Notification("Hi there!"), 1000);
+                        var notification = new Notification("Hi there!")
                     }
                 });
             }
-
-            // At last, if the user has denied notifications, and you
-            // want to be respectful there is no need to bother them any more.
         }
     },
 
     created: function () {
         this.getReadings()
         this.sendNotification();
-        //this.interval = setInterval(() => this.sendNotification(), 5000);
+        this.interval = setInterval(() => this.sendNotification(), 5000);
     }
 }).mount("#app")
