@@ -24,20 +24,31 @@
                         <tr>
                             <th>Sensor</th>
                             <th>Tid</th>
-                            <th>Er den åben?</th>
+                            <th>Er døren åben?</th>
+                            <th>Er døren låst?</th>
                             <th>Billede</th>
                         </tr>
                         <tr v-for="r of filtered " v-if="readings.length > 0" class="reading-row">
                             <td>{{r.sensorId}}</td>
                             <td>{{new Date(r.time * 1000)}}</td>
                             <td>{{r.isOpen}}</td>
+                            <td>{{!r.isOpen}}</td>
                             <td><img :src="'data:image/jpeg;charset=uft-8;base64,'+r.image"/></td>
                         </tr>
 
                     </table>
                 </div>
                 <div class="col-sm-3">
-                    sdsdsd
+                    Sensorer
+                    <table>
+                        <tr>
+                            <th>Sensor ID</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

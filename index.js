@@ -12,7 +12,7 @@ Vue.createApp({
             var username = document.getElementById("name").value;
             var password = document.getElementById("pass").value;
             if ( username == "admin" && password == "1234"){
-            window.location = "MainPage.html"; // Redirecting to other page.
+            this.GoToMainPage() // Redirecting to other page.
             return false;
             }
             else{
