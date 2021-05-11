@@ -16,9 +16,9 @@
         <div class="container-fluid" style="border: dotted;">
             <div class="row">
                 <div class="col-sm-9">
-                    <input v-model.number="searchDay" id="inputDay">
-                    <input v-model.number="searchMonth" id="inputMonth">
-                    <input v-model.number="searchYear" id="inputYear">
+                    <input v-model.number="searchDay" id="inputDay" placeholder="dag">
+                    <input v-model.number="searchMonth" id="inputMonth" placeholder="måned">
+                    <input v-model.number="searchYear" id="inputYear" placeholder="år">
                     <button v-on:click="filter()" class="btn btn-primary" id="filterButton">Filter</button>
                     <table style="width:100%; border: solid;">
                         <tr>
@@ -50,10 +50,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button onclick="document.getElementById('myImage').src='Images/unlocked.gif'" class="btn btn-success">Åben Skabet</button>
+                                    <button id="openLock" onclick="document.getElementById('myImage').src='Images/unlocked.gif'" class="btn btn-success">Åben Skabet</button>
                                 </td>
                                 <td>
-                                    <button onclick="document.getElementById('myImage').src='Images/locked.gif'" class="btn btn-danger">Lås Skabet</button>
+                                    <button id="closeLock" onclick="document.getElementById('myImage').src='Images/locked.gif'" class="btn btn-danger">Lås Skabet</button>
                                 </td>
                                 
                             </tr>
