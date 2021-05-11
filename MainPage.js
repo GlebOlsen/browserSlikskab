@@ -7,11 +7,15 @@ Vue.createApp({
             searchMonth: 4,
             searchYear: 2021,
             readings: [],
-            filtered: []
+            filtered: [],
+            oldLength: -1
         }
     },
     methods: {
         getReadings() {
+            this.oldLength = this.readings.length;
+            alert(this.oldLength);
+            this.readings = [];
             axios.get(baseUrl).then(function (response) {
                 for (reading of response["data"]) {
                     var image = reading.image
@@ -24,6 +28,10 @@ Vue.createApp({
                 }
 
                 this.filtered = this.readings.slice();
+                if(this.readings.length > this.oldLength){
+                    alert("new")
+                    this.sendNotification("New Readings Available")
+                }
             }.bind(this))
         },
 
@@ -43,25 +51,19 @@ Vue.createApp({
             })
         },
 
-        sendNotification() {
-            alert(Notification.permission)
-            // Let's check if the browser supports notifications
+        sendNotification(msg) {
             if (!("Notification" in window)) {
                 alert("This browser does not support desktop notification");
             }
 
-            // Let's check whether notification permissions have already been granted
             else if (Notification.permission === "granted") {
-                // If it's okay let's create a notification
-                var notification = new Notification("Hi there!");
+                var notification = new Notification(msg);
             }
 
-            // Otherwise, we need to ask the user for permission
             else if (Notification.permission !== "denied") {
                 Notification.requestPermission().then(function (permission) {
-                    // If the user accepts, let's create a notification
                     if (permission === "granted") {
-                        var notification = new Notification("Hi there!")
+                        var notification = new Notification(msg);
                     }
                 });
             }
@@ -70,7 +72,6 @@ Vue.createApp({
 
     created: function () {
         this.getReadings()
-        this.sendNotification();
-        this.interval = setInterval(() => this.sendNotification(), 5000);
+        this.interval = setInterval(() => this.getReadings(), 10000);
     }
 }).mount("#app")
