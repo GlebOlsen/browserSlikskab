@@ -14,7 +14,6 @@ Vue.createApp({
     methods: {
         getReadings() {
             this.oldLength = this.readings.length;
-            alert(this.oldLength);
             this.readings = [];
             axios.get(baseUrl).then(function (response) {
                 for (reading of response["data"]) {
@@ -29,7 +28,6 @@ Vue.createApp({
 
                 this.filtered = this.readings.slice();
                 if(this.readings.length > this.oldLength){
-                    alert("new")
                     this.sendNotification("New Readings Available")
                 }
             }.bind(this))
