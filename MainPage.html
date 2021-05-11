@@ -39,16 +39,28 @@
                     </table>
                 </div>
                 <div class="col-sm-3">
-                    Sensorer
-                    <table>
-                        <tr>
-                            <th>Sensor ID</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </table>
+                    <h2>Sensorer</h2>
+                    <div style="border:2px solid blue;">
+                        
+                        <table>
+                            <tr>
+                                <th>SensorID: 1</th>
+                                <th>Status For Sensoren: Aktiv</th>
+                                <th> <img id="myImage" src="Images/unlocked.gif" style="width: 70px;"></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button onclick="document.getElementById('myImage').src='Images/unlocked.gif'" class="btn btn-success">Åben Skabet</button>
+                                </td>
+                                <td>
+                                    <button onclick="document.getElementById('myImage').src='Images/locked.gif'" class="btn btn-danger">Lås Skabet</button>
+                                </td>
+                                
+                            </tr>
+                        </table>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
