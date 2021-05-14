@@ -1,72 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://unpkg.com/vue@next"></script>
     <title>Hovedeside</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <h1>Slikskabsoverblik</h1>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-9">
-                    <a>Filtrer efter specifik dato</a> &nbsp; 
-                    <input v-model.number="searchDay" id="inputDay" placeholder="dag">
-                    <input v-model.number="searchMonth" id="inputMonth" placeholder="måned">
-                    <input v-model.number="searchYear" id="inputYear" placeholder="år">
-                    <button v-on:click="filter()" class="btn btn-primary" id="filterButton">Filter</button>
-                    <table  style="width:100%; border: solid;">
-                        <tr>
-                            <th>Sensor</th>
-                            <th>Tid</th>
-                            <th>Er døren åben?</th>
-                            <th>Billede</th>
-                        </tr>
-                        <tr v-for="r of filtered " v-if="readings.length > 0" class="reading-row">
-                            <td>{{r.sensorId}}</td>
-                            <td>{{new Date(r.time * 1000)}}</td>
-                            <td>{{describeBool(r.isOpen)}}</td>
-                            <td><img :src="'data:image/jpeg;charset=uft-8;base64,'+r.image" /></td>
-                        </tr>
-
-                    </table>
-                </div>
-                <div class="col-sm-3">
-                    <h2>Sensorer</h2>
-                    <div>
-                        <table>
-                            <tr>
-                                <th>SensorID: 1</th>
-                                <th>Status For Sensoren: Aktiv</th>
-                                <th rowspan="2" style="border-style: hidden;"> <img id="myImage" src="Images/unlocked.gif" style="width: 90px;"></th>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center; background-color: green;">
-                                    <button id="openLock" style="background-color: green; border-style: hidden;" onclick="document.getElementById('myImage').src='Images/unlocked.gif'" class="btn btn-success">Åben Skabet</button>
-                                </td>
-                                <td style="text-align: center; background-color: red;">
-                                    <button id="closeLock" style="background-color: red; border-style: hidden;" onclick="document.getElementById('myImage').src='Images/locked.gif'" class="btn btn-danger">Lås Skabet</button>
-                                </td>
-                                
-                            </tr>
-                        </table>
-                        
-                    </div>
-                    
-                </div>
+      <h1>Slikskabsoverblik</h1>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-9">
+            <a>Filtrer efter specifik dato</a> &nbsp;
+            <input v-model.number="searchDay" id="inputDay" placeholder="dag" />
+            <input
+              v-model.number="searchMonth"
+              id="inputMonth"
+              placeholder="måned"
+            />
+            <input
+              v-model.number="searchYear"
+              id="inputYear"
+              placeholder="år"
+            />
+            <button
+              v-on:click="filter()"
+              class="btn btn-primary"
+              id="filterButton"
+            >
+              Filter
+            </button>
+            <table style="width: 100%; border: solid">
+              <tr>
+                <th>Sensor</th>
+                <th>Tid</th>
+                <th>Er døren åben?</th>
+                <th>Billede</th>
+              </tr>
+              <tr
+                v-for="r of filtered "
+                v-if="readings.length > 0"
+                class="reading-row"
+              >
+                <td>{{r.sensorId}}</td>
+                <td>{{new Date(r.time * 1000).toISOString().split('T')[0]}}</td>
+                <td>{{describeBool(r.isOpen)}}</td>
+                <td>
+                  <img :src="'data:image/jpeg;charset=uft-8;base64,'+r.image" />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-sm-3">
+            <h2>Sensorer</h2>
+            <div>
+              <table>
+                <tr>
+                  <th>SensorID: 1</th>
+                  <th>Status For Sensoren: Aktiv</th>
+                  <th rowspan="2" style="border-style: hidden">
+                    <img
+                      id="myImage"
+                      src="Images/unlocked.gif"
+                      style="width: 90px"
+                    />
+                  </th>
+                </tr>
+                <tr>
+                  <td style="text-align: center; background-color: green">
+                    <button
+                      id="openLock"
+                      style="background-color: green; border-style: hidden"
+                      onclick="document.getElementById('myImage').src='Images/unlocked.gif'"
+                      class="btn btn-success"
+                    >
+                      Åben Skabet
+                    </button>
+                  </td>
+                  <td style="text-align: center; background-color: red">
+                    <button
+                      id="closeLock"
+                      style="background-color: red; border-style: hidden"
+                      onclick="document.getElementById('myImage').src='Images/locked.gif'"
+                      class="btn btn-danger"
+                    >
+                      Lås Skabet
+                    </button>
+                  </td>
+                </tr>
+              </table>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="MainPage.js"></script>
-</body>
-
+  </body>
 </html>
