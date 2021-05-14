@@ -3,9 +3,9 @@ Vue.createApp({
     data() {
         //var image = yourString.substring(2, yourString.length-1);
         return {
-            searchDay: 4,
-            searchMonth: 4,
-            searchYear: 2021,
+            searchDay: null,
+            searchMonth: null,
+            searchYear: null,
             readings: [],
             filtered: [],
             oldLength: -1
@@ -65,8 +65,18 @@ Vue.createApp({
                     }
                 });
             }
+        },
+
+        describeBool(value){
+            if(value == true){
+                return "Ja"
+            }
+            else{
+                return "Nej"
+            }
         }
     },
+
 
     created: function () {
         this.getReadings()
