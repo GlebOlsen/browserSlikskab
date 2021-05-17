@@ -9,11 +9,14 @@ Vue.createApp({
             readings: [],
             filtered: [],
             oldLength: -1,
-            sensors: []
+            sensors: [],
+            isShutDown: false
         }
     },
     methods: {
         getReadings() {
+            if(!this.isShutDown){
+
             this.oldLength = this.readings.length;
             this.readings = [];
             axios.get(baseUrl).then(function (response) {
@@ -37,14 +40,16 @@ Vue.createApp({
                 }
 
             }.bind(this))
-        },
-        function(){
-            var counter = 0;
-            window.uniqueId = function(){
-                return 'myImage' + counter++
             }
         },
 
+        shutdown(){
+            this.isShutDown = true;
+        },
+        turnmeon()
+        {
+            this.isShutDown = false;
+        },
         reset() {
             this.filtered = this.readings.slice();
         },

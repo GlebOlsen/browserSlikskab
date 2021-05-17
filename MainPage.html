@@ -16,6 +16,20 @@
   <body>
     <div id="app">
       <h1>Slikskabsoverblik</h1>
+      <button
+        style="background-color: rgb(170, 0, 0); border-style: hidden"
+        v-on:click="shutdown()"
+        class="btn btn-success" 
+      >
+      Sluk systemet
+      </button>
+      <button
+        style="background-color: green; border-style: hidden"
+        v-on:click="turnmeon()"
+        class="btn btn-success" 
+      >
+      Tænd systemet
+      </button>
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-9">
