@@ -8,7 +8,8 @@ Vue.createApp({
             searchYear: null,
             readings: [],
             filtered: [],
-            oldLength: -1
+            oldLength: -1,
+            sensors: []
         }
     },
     methods: {
@@ -24,6 +25,9 @@ Vue.createApp({
                     image = image.substring(2, image.length - 2)
                     reading.image = image
                     this.readings.push(reading)
+                    if(!this.sensors.includes(reading.sensorId)){
+                        this.sensors.push(reading.sensorId);
+                    }
                 }
 
                 this.filtered = this.readings.slice();

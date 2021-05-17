@@ -61,10 +61,10 @@
           </div>
           <div class="col-sm-3">
             <h2>Sensorer</h2>
-            <div>
-              <table>
+            <div  v-for="s in sensors">
+              <table >
                 <tr>
-                  <th>SensorID: 1</th>
+                  <th>SensorID: {{s}}</th>
                   <th>Status For Sensoren: Aktiv</th>
                   <th rowspan="2" style="border-style: hidden">
                     <img
