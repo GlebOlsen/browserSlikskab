@@ -27,6 +27,7 @@ Vue.createApp({
                     this.readings.push(reading)
                     if(!this.sensors.includes(reading.sensorId)){
                         this.sensors.push(reading.sensorId);
+                        
                     }
                 }
 
@@ -35,6 +36,12 @@ Vue.createApp({
                     this.sendNotification("New Readings Available")
                 }
             }.bind(this))
+        },
+        function(){
+            var counter = 0;
+            window.uniqueId = function(){
+                return 'myImage' + counter++
+            }
         },
 
         reset() {
@@ -78,6 +85,17 @@ Vue.createApp({
             else{
                 return "Nej"
             }
+        },
+
+        imageClickUnlock(id){
+            var element=document.getElementById(id)
+            element.src='Images/unlocked.gif'
+            
+
+        },
+        imageClickLock(id){
+            var element=document.getElementById(id)
+            element.src='Images/locked.gif'
         }
     },
 

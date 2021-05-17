@@ -61,14 +61,15 @@
           </div>
           <div class="col-sm-3">
             <h2>Sensorer</h2>
-            <div  v-for="s in sensors">
+            <div  v-for="s in sensors"
+                  v-if="sensors.length>0">
               <table >
                 <tr>
                   <th>SensorID: {{s}}</th>
                   <th>Status For Sensoren: Aktiv</th>
                   <th rowspan="2" style="border-style: hidden">
                     <img
-                      id="myImage"
+                      v-bind:id="s"
                       src="Images/unlocked.gif"
                       style="width: 90px"
                     />
@@ -79,7 +80,7 @@
                     <button
                       id="openLock"
                       style="background-color: green; border-style: hidden"
-                      onclick="document.getElementById('myImage').src='Images/unlocked.gif'"
+                      v-on:click="imageClickUnlock(s)"
                       class="btn btn-success"
                     >
                       Åben Skabet
@@ -89,11 +90,12 @@
                     <button
                       id="closeLock"
                       style="background-color: red; border-style: hidden"
-                      onclick="document.getElementById('myImage').src='Images/locked.gif'"
+                      v-on:click="imageClickLock(s)"
                       class="btn btn-danger"
                     >
                       Lås Skabet
                     </button>
+                    
                   </td>
                 </tr>
               </table>
