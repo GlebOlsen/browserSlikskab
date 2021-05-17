@@ -21,7 +21,7 @@ ul {
   }
 
   .jumbotron {
-      background-color:fuchsia;
+      background-color:rgb(173, 178, 251);
       height: 50px;
       text-align: left;
   }
