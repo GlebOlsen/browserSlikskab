@@ -35,6 +35,7 @@ Vue.createApp({
                 if(this.readings.length > this.oldLength){
                     this.sendNotification("New Readings Available")
                 }
+
             }.bind(this))
         },
         function(){
