@@ -42,6 +42,14 @@ Vue.createApp({
             }.bind(this))
             }
         },
+         statusShutOff() {
+            var x = document.getElementById("statusCheck");
+            return x.innerHTML = "Systemet er slukket"
+          },
+          statusShutOn(){
+              var x = document.getElementById("statusCheck");
+              return x.innerHTML = "Systemet er tændt"
+          },
 
         shutdown(){
             this.isShutDown = true;

@@ -16,17 +16,18 @@
 
   <body>
     <div id="app">
-      <h1>Slikskabsoverblik</h1>     
+      <h1>Slikskabsoverblik</h1> <br><br>    
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-9">
-            <a>Filtrer efter specifik dato</a> &nbsp;
+          <div class="col-sm-8">
+            <a>Filtrer efter dato</a> &nbsp;
             <input v-model.number="searchDay" id="inputDay" placeholder="dag" />
             <input v-model.number="searchMonth" id="inputMonth" placeholder="måned"/>
-            <input v-model.number="searchYear"id="inputYear" placeholder="år"/> &nbsp;
+            <input v-model.number="searchYear"id="inputYear" placeholder="år"/>
             <button v-on:click="filter()" class="btn btn-primary" id="filterButton">Filter</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button style="background-color: rgb(170, 0, 0); border-style: hidden" v-on:click="shutdown()" class="btn btn-success">Sluk systemet</button> &nbsp; 
-        <button style="background-color: green; border-style: hidden" v-on:click="turnmeon()" class="btn btn-success">Tænd systemet</button>
+            <button style="background-color: rgb(170, 0, 0); border-style: hidden" v-on:click="shutdown(); statusShutOff()" class="btn btn-success">Sluk systemet</button> 
+            <button style="background-color: green; border-style: hidden" v-on:click="turnmeon(); statusShutOn()" class="btn btn-success">Tænd systemet</button> &nbsp;
+            <b id="statusCheck">Systemet er tændt</b>
             <table style="width: 100%; border: solid">
               <tr>
                 <th>Sensor</th>
@@ -48,7 +49,7 @@
               </tr>
             </table>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <h2>Sensorer</h2>
             <div  v-for="s in sensors"
                   v-if="sensors.length>0">
