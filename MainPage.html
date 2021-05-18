@@ -22,21 +22,11 @@
           <div class="col-sm-9">
             <a>Filtrer efter specifik dato</a> &nbsp;
             <input v-model.number="searchDay" id="inputDay" placeholder="dag" />
-            <input
-              v-model.number="searchMonth"
-              id="inputMonth"
-              placeholder="måned"
-            />
-            <input
-              v-model.number="searchYear"
-              id="inputYear"
-              placeholder="år"
-            /> &nbsp;
-            <button
-            v-on:click="filter()"
-            class="btn btn-primary"
-            id="filterButton"
-          >Filter</button> &nbsp;
+            <input v-model.number="searchMonth" id="inputMonth" placeholder="måned"/>
+            <input v-model.number="searchYear"id="inputYear" placeholder="år"/> &nbsp;
+            <button v-on:click="filter()" class="btn btn-primary" id="filterButton">Filter</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button style="background-color: rgb(170, 0, 0); border-style: hidden" v-on:click="shutdown()" class="btn btn-success">Sluk systemet</button> &nbsp; 
+        <button style="background-color: green; border-style: hidden" v-on:click="turnmeon()" class="btn btn-success">Tænd systemet</button>
             <table style="width: 100%; border: solid">
               <tr>
                 <th>Sensor</th>
@@ -60,17 +50,6 @@
           </div>
           <div class="col-sm-3">
             <h2>Sensorer</h2>
-           
-            <button
-            style="background-color: rgb(170, 0, 0); border-style: hidden"
-            v-on:click="shutdown()"
-            class="btn btn-success" 
-          >Sluk systemet</button> &nbsp;
-          <button
-            style="background-color: green; border-style: hidden"
-            v-on:click="turnmeon()"
-            class="btn btn-success" 
-          >Tænd systemet</button> 
             <div  v-for="s in sensors"
                   v-if="sensors.length>0">
               <table >
@@ -87,25 +66,10 @@
                 </tr>
                 <tr>
                   <td style="text-align: center; background-color: green">
-                    <button
-                      id="openLock"
-                      style="background-color: green; border-style: hidden"
-                      v-on:click="imageClickUnlock(s)"
-                      class="btn btn-success"
-                    >
-                      Åben Skabet
-                    </button>
+                    <button id="openLock" style="background-color: green; border-style: hidden" v-on:click="imageClickUnlock(s)" class="btn btn-success">Åben Skabet</button>
                   </td>
                   <td style="text-align: center; background-color: red">
-                    <button
-                      id="closeLock"
-                      style="background-color: red; border-style: hidden"
-                      v-on:click="imageClickLock(s)"
-                      class="btn btn-danger"
-                    >
-                      Lås Skabet
-                    </button>
-                    
+                    <button id="closeLock" style="background-color: red; border-style: hidden" v-on:click="imageClickLock(s)" class="btn btn-danger">Lås Skabet</button>
                   </td>
                 </tr>
               </table>
