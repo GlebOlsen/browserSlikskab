@@ -10,26 +10,13 @@
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://unpkg.com/vue@next"></script>
+    <link rel="icon" href="Images/candy_logo.png">
     <title>Hovedeside</title>
   </head>
 
   <body>
     <div id="app">
-      <h1>Slikskabsoverblik</h1>
-      <button
-        style="background-color: rgb(170, 0, 0); border-style: hidden"
-        v-on:click="shutdown()"
-        class="btn btn-success" 
-      >
-      Sluk systemet
-      </button>
-      <button
-        style="background-color: green; border-style: hidden"
-        v-on:click="turnmeon()"
-        class="btn btn-success" 
-      >
-      Tænd systemet
-      </button>
+      <h1>Slikskabsoverblik</h1>     
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-9">
@@ -44,14 +31,12 @@
               v-model.number="searchYear"
               id="inputYear"
               placeholder="år"
-            />
+            /> &nbsp;
             <button
-              v-on:click="filter()"
-              class="btn btn-primary"
-              id="filterButton"
-            >
-              Filter
-            </button>
+            v-on:click="filter()"
+            class="btn btn-primary"
+            id="filterButton"
+          >Filter</button> &nbsp;
             <table style="width: 100%; border: solid">
               <tr>
                 <th>Sensor</th>
@@ -75,6 +60,17 @@
           </div>
           <div class="col-sm-3">
             <h2>Sensorer</h2>
+           
+            <button
+            style="background-color: rgb(170, 0, 0); border-style: hidden"
+            v-on:click="shutdown()"
+            class="btn btn-success" 
+          >Sluk systemet</button> &nbsp;
+          <button
+            style="background-color: green; border-style: hidden"
+            v-on:click="turnmeon()"
+            class="btn btn-success" 
+          >Tænd systemet</button> 
             <div  v-for="s in sensors"
                   v-if="sensors.length>0">
               <table >

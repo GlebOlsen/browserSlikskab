@@ -23,7 +23,7 @@ ul {
   .jumbotron {
       background-color:rgb(173, 178, 251);
       height: 50px;
-      text-align: left;
+      text-align: center;
   }
   .center {
     margin: auto;
