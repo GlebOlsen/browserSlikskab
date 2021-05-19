@@ -9,6 +9,7 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://unpkg.com/vue-cookies@1.7.4/vue-cookies.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <link rel="icon" href="Images/candy_logo.png">
     <title>Hovedeside</title>
@@ -19,7 +20,7 @@
       <h1>Slikskabsoverblik</h1> <br><br>    
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-8">
+          <div class="col-sm-6">
             <a>Filtrer efter dato</a> &nbsp;
             <input v-model.number="searchDay" id="inputDay" placeholder="dag" />
             <input v-model.number="searchMonth" id="inputMonth" placeholder="måned"/>
@@ -40,7 +41,7 @@
                 v-if="readings.length > 0"
                 class="reading-row"
               >
-                <td>{{r.sensorId}}</td>
+                <td>{{getName(r.sensorId-1)}}</td>
                 <td>{{new Date(r.time * 1000).toISOString().split('T')[0]}}</td>
                 <td>{{describeBool(r.isOpen)}}</td>
                 <td>
@@ -55,8 +56,9 @@
                   v-if="sensors.length>0">
               <table >
                 <tr>
-                  <th>SensorID: {{s}}</th>
+                  <th>Sensor: {{getName(s-1)}}</th>
                   <th>Status For Sensoren: Aktiv</th>
+                  <th><input v-bind:id="'nameInput' + s"/></th>
                   <th rowspan="2" style="border-style: hidden">
                     <img
                       v-bind:id="s"
@@ -71,6 +73,10 @@
                   </td>
                   <td style="text-align: center; background-color: red">
                     <button id="closeLock" style="background-color: red; border-style: hidden" v-on:click="imageClickLock(s)" class="btn btn-danger">Lås Skabet</button>
+                  </td>
+
+                  <td style="text-align: center; background-color: red">
+                    <button v-on:click="saveName(s)" style="background-color: red; border-style: hidden" class="btn btn-danger">Gem Navn</button>
                   </td>
                 </tr>
               </table>
