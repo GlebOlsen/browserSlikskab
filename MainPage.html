@@ -20,7 +20,7 @@
       <h1>Slikskabsoverblik</h1> <br><br>    
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-8">
             <a>Filtrer efter dato</a> &nbsp;
             <input v-model.number="searchDay" id="inputDay" placeholder="dag" />
             <input v-model.number="searchMonth" id="inputMonth" placeholder="måned"/>
@@ -56,7 +56,7 @@
                   v-if="sensors.length>0">
               <table >
                 <tr>
-                  <th>Sensor: {{getName(s-1)}}</th>
+                  <th v-bind:id="'name'+ s">Sensor: {{getName(s-1)}}</th>
                   <th>Status For Sensoren: Aktiv</th>
                   <th><input v-bind:id="'nameInput' + s"/></th>
                   <th rowspan="2" style="border-style: hidden">
@@ -76,7 +76,7 @@
                   </td>
 
                   <td style="text-align: center; background-color: red">
-                    <button v-on:click="saveName(s)" style="background-color: red; border-style: hidden" class="btn btn-danger">Gem Navn</button>
+                    <button v-bind:id="'nameButton' + s" v-on:click="saveName(s)" style="background-color: red; border-style: hidden" class="btn btn-danger">Gem Navn</button>
                   </td>
                 </tr>
               </table>
