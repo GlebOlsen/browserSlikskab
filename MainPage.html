@@ -22,9 +22,9 @@
         <div class="row">
           <div class="col-sm-8">
             <a>Filtrer efter dato</a> &nbsp;
-            <input v-model.number="searchDay" id="inputDay" placeholder="dag" />
-            <input v-model.number="searchMonth" id="inputMonth" placeholder="måned"/>
-            <input v-model.number="searchYear"id="inputYear" placeholder="år"/>
+            <input v-model.number="searchDay" id="inputDay" placeholder="dag" size="4" />
+            <input v-model.number="searchMonth" id="inputMonth" placeholder="måned" size="4"/>
+            <input v-model.number="searchYear"id="inputYear" placeholder="år" size="4"/> &nbsp;
             <button v-on:click="filter()" class="btn btn-primary" id="filterButton">Filter</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button style="background-color: rgb(170, 0, 0); border-style: hidden" v-on:click="shutdown(); statusShutOff()" class="btn btn-success">Sluk systemet</button> 
             <button style="background-color: green; border-style: hidden" v-on:click="turnmeon(); statusShutOn()" class="btn btn-success">Tænd systemet</button> &nbsp;
@@ -54,16 +54,15 @@
             <h2>Sensorer</h2>
             <div  v-for="s in sensors"
                   v-if="sensors.length>0">
-              <table >
+              <table>
                 <tr>
-                  <th v-bind:id="'name'+ s">Sensor: {{getName(s-1)}}</th>
-                  <th>Status For Sensoren: Aktiv</th>
-                  <th><input v-bind:id="'nameInput' + s"/></th>
-                  <th rowspan="2" style="border-style: hidden">
+                  <th v-bind:id="'name'+ s" colspan="2">Sensor: {{getName(s-1)}}</th>
+                  <th><input v-bind:id="'nameInput' + s" placeholder="Skift navn på sensor"/></th>
+                  <th rowspan="2">
                     <img
                       v-bind:id="s"
                       src="Images/unlocked.gif"
-                      style="width: 90px"
+                      style="width: 90px;"
                     />
                   </th>
                 </tr>
@@ -75,8 +74,8 @@
                     <button id="closeLock" style="background-color: red; border-style: hidden" v-on:click="imageClickLock(s)" class="btn btn-danger">Lås Skabet</button>
                   </td>
 
-                  <td style="text-align: center; background-color: red">
-                    <button v-bind:id="'nameButton' + s" v-on:click="saveName(s)" style="background-color: red; border-style: hidden" class="btn btn-danger">Gem Navn</button>
+                  <td style="text-align: center; background-color: grey">
+                    <button v-bind:id="'nameButton' + s" v-on:click="saveName(s)" style="background-color: grey; border-style: hidden" class="btn btn-primary">Gem Navn</button>
                   </td>
                 </tr>
               </table>
