@@ -20,13 +20,13 @@
       <h1>Slikskabsoverblik</h1> <br><br>    
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-8">
-            <a>Filtrer efter dato</a> &nbsp;
+          <div class="col-sm-8 ">
+            <a>Filtrer efter dato</a> <br>
             <input v-model.number="searchDay" id="inputDay" placeholder="dag" size="4" />
             <input v-model.number="searchMonth" id="inputMonth" placeholder="måned" size="4"/>
             <input v-model.number="searchYear"id="inputYear" placeholder="år" size="4"/> &nbsp;
             <button v-on:click="filter()" class="btn btn-primary" id="filterButton">Filter</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button style="background-color: rgb(170, 0, 0); border-style: hidden" v-on:click="shutdown(); statusShutOff()" class="btn btn-success">Sluk systemet</button> 
+            <button style="background-color: rgb(170, 0, 0); border-style: hidden" v-on:click="shutdown(); statusShutOff()" class="btn btn-success">Sluk systemet</button> &nbsp;
             <button style="background-color: green; border-style: hidden" v-on:click="turnmeon(); statusShutOn()" class="btn btn-success">Tænd systemet</button> &nbsp;
             <b id="statusCheck">Systemet er tændt</b>
             <table style="width: 100%; border: solid">
@@ -45,12 +45,12 @@
                 <td>{{new Date(r.time * 1000).toISOString().split('T')[0]}}</td>
                 <td>{{describeBool(r.isOpen)}}</td>
                 <td>
-                  <img :src="'data:image/jpeg;charset=uft-8;base64,'+r.image" />
+                  <img :src="'data:image/jpeg;charset=uft-8;base64,'+r.image"/>
                 </td>
               </tr>
             </table>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4-fluid">
             <h2>Sensorer</h2>
             <div  v-for="s in sensors"
                   v-if="sensors.length>0">
