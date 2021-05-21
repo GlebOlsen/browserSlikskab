@@ -42,7 +42,7 @@
                 class="reading-row"
               >
                 <td>{{getName(r.sensorId-1)}}</td>
-                <td>{{new Date(r.time * 1000).toISOString().split('T')[0]+" "+new Date(r.time * 1000).toISOString().split('T')[1].split('.')[0]}}</td>]
+                <td>{{new Date(r.time * 1000).toISOString().split('T')[0]+" "+new Date(r.time * 1000).toISOString().split('T')[1].split('.')[0]}}</td>
                 <td>{{describeBool(r.isOpen)}}</td>
                 <td>
                   <img :src="'data:image/jpeg;charset=uft-8;base64,'+r.image"/>
