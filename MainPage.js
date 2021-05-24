@@ -1,4 +1,4 @@
-const baseUrl = "https://slikskabdata.azurewebsites.net/api/reading"
+const baseUrl = "https://slikskabrest.azurewebsites.net/api/reading"
 
 Vue.createApp({
     data() {
